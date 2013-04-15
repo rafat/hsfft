@@ -1,0 +1,23 @@
+HSFFT is designed specifically to handle time series data efficiently.  The software is structured very similarly to available open source softwares like FFTW and kissfft. The data structure is almost identical to Mark Borgerding's kissfft implementaion. However, this implementation is lightweight compared to FFTW and should give better performance for non-power of two implementations compared to kissfft in a single core setting. The project is a work in progress and the To-Do list is considerably long, including an implementation with multicore/multithread support, real FFT support, multi-stride and multi-dimensional FFTs.
+
+Algorithm - HSFFT computes Out of Place FFT using a recursive FFT routine which is "semi-optimized" for radix 2,3,4,5,7,8. As of now , general radices upto length 53 are supported using a generic module and a routine directly based on Paul N. Swarztrauber's Bluestein algorithm is utilized for other general lengths. 
+
+Usage -
+
+
+fft_object obj = fft_init(N,1); // Initialize FFT object obj . N - FFT Length. 1 - Forward FFT and -1 for Inverse FFT
+
+// FFT Object obj , thus created, can be used as many time as you wish.
+
+fft_data* inp = (fft_data*) malloc (sizeof(fft_data) * N); // Allocate Input Data
+fft_data* oup = (fft_data*) malloc (sizeof(fft_data) * N); // Allocate Output Data
+
+fft_exec(obj,inp,oup); // Compute FFT
+
+//Deallocate Data and Object Obj when the computation is finished
+
+ free(inp);
+ free(oup);
+ free_fft(obj);
+
+ Contact - rafat.hsn@gmail.com for any bug reporting, error corrections and recommendations.
