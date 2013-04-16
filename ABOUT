@@ -12,7 +12,17 @@ fft_object obj = fft_init(N,1); // Initialize FFT object obj . N - FFT Length. 1
 fft_data* inp = (fft_data*) malloc (sizeof(fft_data) * N); // Allocate Input Data
 fft_data* oup = (fft_data*) malloc (sizeof(fft_data) * N); // Allocate Output Data
 
+/*  Data Access */
+
+//Input can be entered as following
+for (i = 0; i < 16; i++) {
+  inp[i].re = i;
+  inp[i].im = i;
+}
+
 fft_exec(obj,inp,oup); // Compute FFT
+
+// Output is complex. Real oup[i].re and imaginary oup[i].im can be accessed for the ith location. 
 
 //Deallocate Data and Object Obj when the computation is finished
 
