@@ -1464,8 +1464,10 @@ static void bluestein_exp(fft_data *hl, fft_data *hlt, int len, int M) {
 
 	for (i = 0 ; i < len; ++i) {
 		angle = theta * l2;
-		hl[i].re = hlt[i].re = cos(angle);
-		hl[i].im =hlt[i].im = sin(angle);
+		hlt[i].re = cos(angle);
+		hlt[i].im = sin(angle);
+		hl[i].re = hlt[i].re;
+		hl[i].im = hlt[i].im;
 		l2+=2*i+1;
 		while (l2 > len2) {
 			l2-=len2;
@@ -1488,6 +1490,7 @@ static void bluestein_exp(fft_data *hl, fft_data *hlt, int len, int M) {
 static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, int N) {
 
 	int K,M,ii,i;
+	int def_lt,def_N,def_sgn;
 	fft_type scale,temp;
 	fft_data* yn;
 	fft_data* hk;
@@ -1496,6 +1499,9 @@ static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, 
 	fft_data* hlt;
 	obj->lt = 0;
 	K = (int) pow(2.0,ceil((double) log10((double) N)/log10((double) 2.0)));
+	def_lt = 1;
+	def_sgn = obj->sgn;
+	def_N = obj->N;
 
 	if (K < 2 * N - 2) {
 		M = K * 2;
@@ -1579,6 +1585,12 @@ static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, 
 
 	}
 
+	obj->sgn = def_sgn;
+	obj->N = def_N;
+	obj->lt = def_lt;
+	for (ii = 0; ii < M; ++ii) {
+		(obj->twiddle+ii)->im = -(obj->twiddle+ii)->im;
+	}
 
     free(yn);
     free(yno);

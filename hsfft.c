@@ -1482,11 +1482,13 @@ static void bluestein_exp(fft_data *hl, fft_data *hlt, int len, int M) {
 
 static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, int N) {
 	obj->lt = 0;
-
+	int def_lt,def_N,def_sgn;
 	int K,M,ii,i;
 	fft_type scale,temp;
 	K = (int) pow(2.0,ceil(log10(N)/log10(2.0)));
-
+	def_lt = 1;
+	def_sgn = obj->sgn;
+	def_N = obj->N;
 	if (K < 2 * N - 2) {
 		M = K * 2;
 	} else {
@@ -1568,7 +1570,13 @@ static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, 
 		}
 
 	}
-
+	
+	obj->sgn = def_sgn;
+	obj->N = def_N;
+	obj->lt = def_lt;
+	for (ii = 0; ii < M; ++ii) {
+		(obj->twiddle+ii)->im = -(obj->twiddle+ii)->im;
+	}
 
     free(yn);
     free(yno);
