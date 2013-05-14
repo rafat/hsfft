@@ -73,7 +73,7 @@ conv_object conv_init(int N, int L) {
 	
 }
 
-void conv_direct(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup){
+void conv_directx(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup){
 	int M,k,n;
 	
 	M = N + L - 1;
@@ -88,6 +88,57 @@ void conv_direct(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup){
 		
 	}
 		
+}
+
+void conv_direct(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup) {
+
+	int M,k,m,i;
+	fft_type t1,tmin;
+
+	M = N + L -1;
+	i = 0;
+
+	if (N >= L) {
+
+		for (k = 0; k < L; k++) {
+			oup[k] = 0.0;
+			for (m = 0; m < k;m++) {
+				oup[k]+= inp1[m] * inp2[k-m];
+			}
+		}
+
+		for (k = L; k < M; k++) {
+			oup[k] = 0.0;
+			i++;
+			t1 = L + i -1;
+			tmin = MIN(t1,N);
+			for (m = i; m < tmin;m++) {
+				oup[k]+= inp1[m] * inp2[k-m];
+			}
+		}
+
+
+	} else {
+		for (k = 0; k < N; k++) {
+			oup[k] = 0.0;
+			for (m = 0; m < k;m++) {
+				oup[k]+= inp2[m] * inp1[k-m];
+			}
+		}
+
+		for (k = N; k < M; k++) {
+			oup[k] = 0.0;
+			i++;
+			t1 = N + i -1;
+			tmin = MIN(t1,L);
+			for (m = i; m < tmin;m++) {
+				oup[k]+= inp2[m] * inp1[k-m];
+			}
+		}
+
+	}
+
+
 }
 
 
