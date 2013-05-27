@@ -102,7 +102,7 @@ void conv_direct(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup) {
 
 		for (k = 0; k < L; k++) {
 			oup[k] = 0.0;
-			for (m = 0; m < k;m++) {
+			for (m = 0; m <= k;m++) {
 				oup[k]+= inp1[m] * inp2[k-m];
 			}
 		}
@@ -110,7 +110,7 @@ void conv_direct(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup) {
 		for (k = L; k < M; k++) {
 			oup[k] = 0.0;
 			i++;
-			t1 = L + i -1;
+			t1 = L + i;
 			tmin = MIN(t1,N);
 			for (m = i; m < tmin;m++) {
 				oup[k]+= inp1[m] * inp2[k-m];
@@ -121,7 +121,7 @@ void conv_direct(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup) {
 	} else {
 		for (k = 0; k < N; k++) {
 			oup[k] = 0.0;
-			for (m = 0; m < k;m++) {
+			for (m = 0; m <= k;m++) {
 				oup[k]+= inp2[m] * inp1[k-m];
 			}
 		}
@@ -129,7 +129,7 @@ void conv_direct(fft_type *inp1,int N, fft_type *inp2, int L,fft_type *oup) {
 		for (k = N; k < M; k++) {
 			oup[k] = 0.0;
 			i++;
-			t1 = N + i -1;
+			t1 = N + i;
 			tmin = MIN(t1,L);
 			for (m = i; m < tmin;m++) {
 				oup[k]+= inp2[m] * inp1[k-m];
