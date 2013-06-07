@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : cfft2.c
+ Name        : cplxfft.c
  Author      : Rafat Hussain
  Version     :
  Copyright   : 

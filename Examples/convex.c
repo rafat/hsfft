@@ -1,10 +1,10 @@
 /*
  ============================================================================
- Name        : cfft2.c
+ Name        : convex.c
  Author      : Rafat Hussain
  Version     :
  Copyright   : 
- Description : Hello World in C, Ansi-style
+ Description : Comvolution Example
  ============================================================================
  */
 
