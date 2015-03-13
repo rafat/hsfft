@@ -2,6 +2,8 @@ HSFFT is designed specifically to handle time series data efficiently.  The soft
 
 Algorithm - HSFFT computes Out of Place FFT using a recursive FFT routine which is "semi-optimized" for radix 2,3,4,5,7,8. As of now , general radices upto length 53 are supported using a generic module and a routine directly based on Paul N. Swarztrauber's Bluestein algorithm is utilized for other general lengths. 
 
+WIKI - https://github.com/rafat/hsfft/wiki
+
 Usage -
 
 1. Regular Complex FFT ( Complex Data I/O)
