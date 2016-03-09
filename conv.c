@@ -7,7 +7,7 @@
 
 #include "conv.h"
 
-int inline factorf(int M) {
+int factorf(int M) {
 	int N;
 	N = M;
 	while (N%7 == 0){
@@ -27,7 +27,7 @@ int inline factorf(int M) {
 }
 
 
-int inline findnext(int M) {
+int findnext(int M) {
 	int N;
 	N = M;
 
@@ -39,7 +39,7 @@ int inline findnext(int M) {
 
 }
 
-int inline findnexte(int M) {
+int findnexte(int M) {
 	int N;
 	N = M;
 
@@ -204,5 +204,7 @@ void conv_fft(const conv_object obj,fft_type *inp1,fft_type *inp2,fft_type *oup)
 
 
 void free_conv(conv_object object) {
+	free_real_fft(object->fobj);
+	free_real_fft(object->iobj);
 	free(object);
 }

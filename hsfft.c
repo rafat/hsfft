@@ -67,13 +67,12 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		op[0].im = ip[0].im;
 
 	} else if (N == 2) {
+		fft_type tau1r,tau1i;
 		op[0].re = ip[0].re;
 		op[0].im = ip[0].im;
 
 		op[1].re = ip[l].re;
 		op[1].im = ip[l].im;
-
-		fft_type tau1r,tau1i;
 
 		tau1r = op[0].re;
 		tau1i = op[0].im;
@@ -86,6 +85,7 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		op[1].im = tau1i - op[1].im;
 
 	} else if (N == 3) {
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i;
 		op[0].re = ip[0].re;
 		op[0].im = ip[0].im;
 
@@ -94,8 +94,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 		op[2].re = ip[2*l].re;
 		op[2].im = ip[2*l].im;
-
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i;
 
 		tau0r = op[1].re + op[2].re;
 		tau0i = op[1].im + op[2].im;
@@ -119,6 +117,7 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 
 	} else if (N == 4) {
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
 		op[0].re = ip[0].re;
 		op[0].im = ip[0].im;
 
@@ -130,8 +129,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 		op[3].re = ip[3*l].re;
 		op[3].im = ip[3*l].im;
-
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
 
 		tau0r = op[0].re + op[2].re;
 		tau0i = op[0].im + op[2].im;
@@ -160,6 +157,8 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 
 	} else if (N == 5) {
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i,tau4r,tau4i,tau5r,tau5i,tau6r,tau6i;
+		fft_type c1,c2,s1,s2;
 		op[0].re = ip[0].re;
 		op[0].im = ip[0].im;
 
@@ -174,9 +173,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 		op[4].re = ip[4*l].re;
 		op[4].im = ip[4*l].im;
-
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i,tau4r,tau4i,tau5r,tau5i,tau6r,tau6i;
-		fft_type c1,c2,s1,s2;
 
 		c1 = 0.30901699437;
 		c2 = -0.80901699437;
@@ -251,6 +247,8 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 
 	} else if (N == 7) {
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i,tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i;
+		fft_type c1,c2,c3,s1,s2,s3;
 		op[0].re = ip[0].re;
 		op[0].im = ip[0].im;
 
@@ -271,9 +269,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 		op[6].re = ip[6*l].re;
 		op[6].im = ip[6*l].im;
-
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i,tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i;
-		fft_type c1,c2,c3,s1,s2,s3;
 
 		c1 = 0.62348980185;
 		c2 = -0.22252093395;
@@ -372,6 +367,8 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 
 	} else if (N == 8) {
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i,tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i,tau8r,tau8i,tau9r,tau9i;
+		fft_type c1,s1,temp1r,temp1i,temp2r,temp2i;
 		op[0].re = ip[0].re;
 		op[0].im = ip[0].im;
 
@@ -395,9 +392,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		
 		op[7].re = ip[7*l].re;
 		op[7].im = ip[7*l].im;
-
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i,tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i,tau8r,tau8i,tau9r,tau9i;
-		fft_type c1,s1,temp1r,temp1i,temp2r,temp2i;
 		
 		c1 = 0.70710678118654752440084436210485;
 		s1 = 0.70710678118654752440084436210485;
@@ -511,13 +505,13 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 
 	} else if (radix == 2) {
+		int k,tkm1,ind;
+		fft_type wlr,wli;
+		fft_type tau1r,tau1i,tau2r,tau2i;
 		m = N/2;
 		ll = 2*l;
 		mixed_radix_dit_rec(op,ip,obj,sgn,m,ll,inc+1);
 		mixed_radix_dit_rec(op+m,ip+l,obj,sgn,m,ll,inc+1);
-		int k,tkm1,ind;
-		fft_type wlr,wli;
-		fft_type tau1r,tau1i,tau2r,tau2i;
 
 		for (k = 0; k < m;k++) {
 			ind = m-1+k;
@@ -543,6 +537,10 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		}
 
 	} else if (radix == 3) {
+		int k,tkm1,tkm2,ind;
+		fft_type wlr,wli,wl2r,wl2i;
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i;
+		fft_type ar,ai,br,bi,cr,ci;
 		m = N/3;
 		ll = 3*l;
 		mixed_radix_dit_rec(op,ip,obj,sgn,m,ll,inc+1);
@@ -550,10 +548,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		mixed_radix_dit_rec(op+2*m,ip+2*l,obj,sgn,m,ll,inc+1);
 		//printf("%d \n",inc);
 		//mixed_radix3_dit_rec(op,ip,obj,sgn,ll,m);
-		int k,tkm1,tkm2,ind;
-		fft_type wlr,wli,wl2r,wl2i;
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i;
-		fft_type ar,ai,br,bi,cr,ci;
 
 
 		for (k = 0; k < m; ++k) {
@@ -597,6 +591,10 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		}
 
 	} else if (radix == 4) {
+		int k,tkm1,tkm2,tkm3,ind;
+		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i;
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
+		fft_type ar,ai,br,bi,cr,ci,dr,di;
 		m = N/4;
 		ll = 4*l;
 		mixed_radix_dit_rec(op,ip,obj,sgn,m,ll,inc+1);
@@ -605,11 +603,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		mixed_radix_dit_rec(op+3*m,ip+3*l,obj,sgn,m,ll,inc+1);
 
 		//mixed_radix4_dit_rec(op,ip,obj,sgn,ll,m);
-
-		int k,tkm1,tkm2,tkm3,ind;
-		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i;
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
-		fft_type ar,ai,br,bi,cr,ci,dr,di;
 
 		tkm1 = m;
 		tkm2 = tkm1 + m;
@@ -706,7 +699,12 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		}
 
 	} else if (radix == 5) {
-
+		int k,tkm1,tkm2,tkm3,tkm4,ind;
+		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i,wl4r,wl4i;
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
+		fft_type ar,ai,br,bi,cr,ci,dr,di,er,ei;
+		fft_type tau4r,tau4i,tau5r,tau5i,tau6r,tau6i;
+		fft_type c1,c2,s1,s2;
 		m = N/5;
 		ll = 5*l;
 		mixed_radix_dit_rec(op,ip,obj,sgn,m,ll,inc+1);
@@ -716,12 +714,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		mixed_radix_dit_rec(op+4*m,ip+4*l,obj,sgn,m,ll,inc+1);
 		//printf("%d \n",inc);
 		//mixed_radix3_dit_rec(op,ip,obj,sgn,ll,m);
-		int k,tkm1,tkm2,tkm3,tkm4,ind;
-		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i,wl4r,wl4i;
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
-		fft_type ar,ai,br,bi,cr,ci,dr,di,er,ei;
-		fft_type tau4r,tau4i,tau5r,tau5i,tau6r,tau6i;
-		fft_type c1,c2,s1,s2;
 
 		c1 = 0.30901699437;
 		c2 = -0.80901699437;
@@ -895,7 +887,12 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		}
 
 	} else if (radix == 7) {
-
+		int k,tkm1,tkm2,tkm3,tkm4,tkm5,tkm6,ind;
+		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i,wl4r,wl4i,wl5r,wl5i,wl6r,wl6i;
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
+		fft_type ar,ai,br,bi,cr,ci,dr,di,er,ei,fr,fi,gr,gi;
+		fft_type tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i;
+		fft_type c1,c2,c3,s1,s2,s3;
 		m = N/7;
 		ll = 7*l;
 		mixed_radix_dit_rec(op,ip,obj,sgn,m,ll,inc+1);
@@ -907,12 +904,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		mixed_radix_dit_rec(op+6*m,ip+6*l,obj,sgn,m,ll,inc+1);
 		//printf("%d \n",inc);
 		//mixed_radix3_dit_rec(op,ip,obj,sgn,ll,m);
-		int k,tkm1,tkm2,tkm3,tkm4,tkm5,tkm6,ind;
-		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i,wl4r,wl4i,wl5r,wl5i,wl6r,wl6i;
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
-		fft_type ar,ai,br,bi,cr,ci,dr,di,er,ei,fr,fi,gr,gi;
-		fft_type tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i;
-		fft_type c1,c2,c3,s1,s2,s3;
 
 		c1 = 0.62348980185;
 		c2 = -0.22252093395;
@@ -1175,7 +1166,12 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		}
 
 	} else if (radix == 8) {
-
+		int k,tkm1,tkm2,tkm3,tkm4,tkm5,tkm6,tkm7,ind;
+		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i,wl4r,wl4i,wl5r,wl5i,wl6r,wl6i,wl7r,wl7i;
+		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
+		fft_type ar,ai,br,bi,cr,ci,dr,di,er,ei,fr,fi,gr,gi,hr,hi;
+		fft_type tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i,tau8r,tau8i,tau9r,tau9i;
+		fft_type c1,s1,temp1r,temp1i,temp2r,temp2i;
 		m = N/8;
 		ll = 8*l;
 		mixed_radix_dit_rec(op,ip,obj,sgn,m,ll,inc+1);
@@ -1188,12 +1184,6 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 		mixed_radix_dit_rec(op+7*m,ip+7*l,obj,sgn,m,ll,inc+1);
 		//printf("%d \n",inc);
 		//mixed_radix3_dit_rec(op,ip,obj,sgn,ll,m);
-		int k,tkm1,tkm2,tkm3,tkm4,tkm5,tkm6,tkm7,ind;
-		fft_type wlr,wli,wl2r,wl2i,wl3r,wl3i,wl4r,wl4i,wl5r,wl5i,wl6r,wl6i,wl7r,wl7i;
-		fft_type tau0r,tau0i,tau1r,tau1i,tau2r,tau2i,tau3r,tau3i;
-		fft_type ar,ai,br,bi,cr,ci,dr,di,er,ei,fr,fi,gr,gi,hr,hi;
-		fft_type tau4r,tau4i,tau5r,tau5i,tau6r,tau6i,tau7r,tau7i,tau8r,tau8i,tau9r,tau9i;
-		fft_type c1,s1,temp1r,temp1i,temp2r,temp2i;
 
 		c1 = 0.70710678118654752440084436210485;
 		s1 = 0.70710678118654752440084436210485;
@@ -1360,9 +1350,16 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 	} else {
 		int k,i,ind;
 		int M,tkm,u,v,t,tt;
-		fft_type wlr[radix-1],wli[radix-1],taur[radix-1],taui[radix-1];
-		fft_type c1[radix-1],s1[radix-1],yr[radix],yi[radix];
 		fft_type temp1r,temp1i,temp2r,temp2i;
+		fft_type* wlr = (fft_type*) malloc (sizeof(fft_type) * (radix-1));
+		fft_type* wli = (fft_type*) malloc (sizeof(fft_type) * (radix-1));
+		fft_type* taur = (fft_type*) malloc (sizeof(fft_type) * (radix-1));
+		fft_type* taui = (fft_type*) malloc (sizeof(fft_type) * (radix-1));
+		fft_type* c1 = (fft_type*) malloc (sizeof(fft_type) * (radix-1));
+		fft_type* s1 = (fft_type*) malloc (sizeof(fft_type) * (radix-1));
+		fft_type* yr = (fft_type*) malloc (sizeof(fft_type) * (radix));
+		fft_type* yi = (fft_type*) malloc (sizeof(fft_type) * (radix));
+		
 		m = N /radix;
 		ll = radix * l;
 
@@ -1443,6 +1440,14 @@ static void mixed_radix_dit_rec(fft_data *op,fft_data *ip,const fft_object obj, 
 
 
 		}
+		free(wlr);
+		free(wli);
+		free(taur);
+		free(taui);
+		free(c1);
+		free(s1);
+		free(yr);
+		free(yi);
 
 	}
 
@@ -1459,8 +1464,10 @@ static void bluestein_exp(fft_data *hl, fft_data *hlt, int len, int M) {
 
 	for (i = 0 ; i < len; ++i) {
 		angle = theta * l2;
-		hl[i].re = hlt[i].re = cos(angle);
-		hl[i].im =hlt[i].im = sin(angle);
+		hlt[i].re = cos(angle);
+		hlt[i].im = sin(angle);
+		hl[i].re = hlt[i].re;
+		hl[i].im = hlt[i].im;
 		l2+=2*i+1;
 		while (l2 > len2) {
 			l2-=len2;
@@ -1481,14 +1488,21 @@ static void bluestein_exp(fft_data *hl, fft_data *hlt, int len, int M) {
 }
 
 static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, int N) {
-	obj->lt = 0;
-	int def_lt,def_N,def_sgn;
+
 	int K,M,ii,i;
+	int def_lt,def_N,def_sgn;
 	fft_type scale,temp;
-	K = (int) pow(2.0,ceil(log10(N)/log10(2.0)));
+	fft_data* yn;
+	fft_data* hk;
+	fft_data* tempop;
+	fft_data* yno;
+	fft_data* hlt;
+	obj->lt = 0;
+	K = (int) pow(2.0,ceil((double) log10((double) N)/log10((double) 2.0)));
 	def_lt = 1;
 	def_sgn = obj->sgn;
 	def_N = obj->N;
+
 	if (K < 2 * N - 2) {
 		M = K * 2;
 	} else {
@@ -1496,11 +1510,11 @@ static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, 
 	}
 	obj->N = M;
 
-	fft_data* yn = (fft_data*) malloc (sizeof(fft_data) * M);
-	fft_data* hk = (fft_data*) malloc (sizeof(fft_data) * M);
-	fft_data* tempop = (fft_data*) malloc (sizeof(fft_data) * M);
-	fft_data* yno = (fft_data*) malloc (sizeof(fft_data) * M);
-    fft_data* hlt = (fft_data*) malloc (sizeof(fft_data) * N);
+	yn = (fft_data*) malloc (sizeof(fft_data) * M);
+	hk = (fft_data*) malloc (sizeof(fft_data) * M);
+	tempop = (fft_data*) malloc (sizeof(fft_data) * M);
+	yno = (fft_data*) malloc (sizeof(fft_data) * M);
+    hlt = (fft_data*) malloc (sizeof(fft_data) * N);
     //fft_data* twi = (fft_data*) malloc (sizeof(fft_data) * M);
 
     bluestein_exp(tempop,hlt,N,M);
@@ -1570,7 +1584,7 @@ static void bluestein_fft(fft_data *data, fft_data *oup,fft_object obj,int sgn, 
 		}
 
 	}
-	
+
 	obj->sgn = def_sgn;
 	obj->N = def_N;
 	obj->lt = def_lt;
@@ -1843,5 +1857,4 @@ void longvectorN(fft_data *sig,int N, int *array, int tx) {
 
 void free_fft(fft_object object) {
 	free(object);
-
 }
